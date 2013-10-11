@@ -1,0 +1,72 @@
+\documentclass[80pt,a5paper,landscape]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If the error
+% ``No room for ..''
+% increase the reserved inserts
+%--------------------------------------------
+% \usepackage{etex} % to use etex extensions 
+% \reserveinserts{28} % using etex extensions
+
+\usepackage[english]{babel}
+
+% UTF-8 support any characters
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{ucs}
+% Defaul loaded character table is ASCII and latin
+
+\usepackage{amsmath}
+\usepackage{amssymb} % amsfonts is part of amssymb
+
+\usepackage{graphicx}
+\usepackage[usenames]{color}
+%\usepackage{chancery} % change serif to Zapf Chancery
+\usepackage{datatool}
+\usepackage[lmargin=1cm,tmargin=1cm,bmargin=1.6cm,rmargin=1.6cm]{geometry}
+\usepackage{fancybox} % border page and boxes
+\usepackage{mathpazo}
+
+\sloppy
+
+\pagestyle{empty}
+
+% box around pages, using fancybox package
+%
+% \fancypage{\fbox}{}
+% \fancypage{\setlength{\fboxsep}{8pt}\setlength{\shadowsize}{8pt}\shadowbox}{}
+
+
+%\fancypage{\setlength{\fboxsep}{8pt}\shadowbox}{}
+\fancypage{\setlength{\fboxsep}{8pt}\doublebox}{}
+
+\newcommand{\event}{ADI Startup Fair}
+
+\begin{document}
+% default separator is coma and default delimiter is double quote      
+% \DTLsetseparator{,}
+% \DTLsetdelimiter{"}
+
+\DTLloaddb{list}{names.csv}
+
+\DTLforeach{list}{%
+\name=name,\company=company}{%
+
+    \fontsize{60}{70}\fontfamily{pbk}\fontseries{m}\fontshape{n}\selectfont  
+    \baselineskip 1.0em
+
+    \vspace*{.5cm} 
+
+    \begin{center}
+    {\name}
+
+    \vskip 2.0cm 
+
+    {\company}
+
+
+    \end{center}
+
+    \newpage
+}  
+\end{document}
